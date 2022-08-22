@@ -39,6 +39,39 @@ titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
   });
 });
 
+
+router.get('/', async function(req, res, next) {
+console.log("Pase??")
+  let titulosYFoto = await todasLasPeliculasModel.todasLasPeliculas()
+  
+  
+  titulosYFoto = titulosYFoto.map(peliculas =>{
+    if(peliculas.imagenes){
+      const imagen = cloudinary.image(peliculas.imagenes,{
+        width:100,
+        height:100,
+        crop:"fill"
+      });
+      return {
+        ...peliculas,
+        imagen
+      }
+    }else{
+      return {
+        ...peliculas,
+        imagen:" "
+      }
+    }
+  })
+  
+    res.render('todasLasPeliculas', {
+      layout: "layout",
+      titulosYFoto
+    });
+  });
+
+
+
 router.get("/salir", function (req, res){
   req.session.destroy();
   res.render("login",{

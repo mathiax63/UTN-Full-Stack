@@ -97,7 +97,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/todasLasPeliculas', todosRouter);
-app.use('/detalle', especificoRouter);
+app.use('/detalles', especificoRouter);
 app.use('/paginasParaVer', plataformaRouter);
 app.use("/admin/admin",secured, adminRouter)
 app.use("/api", cors(),apiRouter)
