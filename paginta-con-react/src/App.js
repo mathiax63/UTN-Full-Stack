@@ -27,7 +27,7 @@ function App() {
       <Route path='admin' element={<Administrador />}/>
       <Route path='paginasParaVer' element={<PaginaParaVer />}/>
       <Route path='todasLasPeliculas' element={<TodasLasPeliculas />}/>
-      <Route path='detalle' element={<Detalles />}/>
+      <Route path='detalles' element={<Detalles />}/>
       </Routes>
       </BrowserRouter>
       <Footer></Footer>

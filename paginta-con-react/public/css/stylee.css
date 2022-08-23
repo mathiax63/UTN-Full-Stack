@@ -8,6 +8,16 @@ ul{
     margin:0px 30px;
     
 }
+.divCompTodasP{
+    padding: 20px;
+    width: 20%;
+}
+.imgTp{
+    width: 100%;
+}
+.aDelCT{
+    text-align: center;
+}
 a{
     color: black;
     text-decoration: none;

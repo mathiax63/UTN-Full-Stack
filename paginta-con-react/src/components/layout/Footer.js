@@ -1,7 +1,42 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
+import axios from "axios"
+import  {useState} from "react"
+
 
 const Footer = (props) => {
+
+  const initialFrom = {   
+    email:'',
+    pedido: '',
+  }
+
+  const [sending, setSending] = useState(false)
+  const [msg, setMsg] =useState("");
+  const [formData,setFromData] =useState(initialFrom)
+
+  const handleChange =e =>{
+    const {name, value} = e.target
+    setFromData(oldData => ({
+      ...oldData,
+      [name]:value
+    }))
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setMsg("");
+    setSending(true)
+    const response = await axios.post("http://localhost:3000/api/contacto", formData)
+    setSending(false);
+    setMsg(response.data.message);
+    if (response.data.error === false){
+    setFromData(initialFrom)
+  }
+  }
+
+
+
     return (
       <div>
       <footer>
@@ -34,19 +69,17 @@ const Footer = (props) => {
         </article>
       </section>
     </div>
-      <form class="formPP"action="">
+      <form className="formPP"action="/contacto" onSubmit={handleSubmit} method='post'>
         <h3>¿No encuentra su pelicula?</h3>
         <p>Envienos un email con el nombre d la pelicula y envrebe la estaremos añadiendo</p>
         <div class="contenedorDePedirPeliculas">
         <div class="divPedirPeliculas">
-          <label class="labelDePedirPelicula" for="">Su Email :</label>
-        <input class="inputPedirPeli" type="email" name="Email" />
-        
-
+          <label class="labelDePedirPelicula" for="email">Su Email :</label>
+        <input class="inputPedirPeli" type="text" name="email" value={formData.email} onChange={handleChange}/>
       </div>
       <div class="divPedirPeliculas">
-        <label class="labelDePedirPelicula" for="">pelicula a añadir :</label>
-        <input class="inputPedirPeli" type="text" name="pedido" />
+        <label class="labelDePedirPelicula" for="pedido">pelicula a añadir :</label>
+        <input class="inputPedirPeli" type="text" name="pedido" value={formData.pedido} onChange={handleChange}/>
         
         
     </div>
@@ -55,6 +88,8 @@ const Footer = (props) => {
   </div>
 
     </form>
+    {sending ? <p>Enviando.....</p> : null}
+    {msg ? <p>{msg}</p> : null}
 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -10,7 +10,7 @@ const TodasLasPeliculas = (props) => {
   useEffect(() => {
     const cargarNovedades = async () => {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/");
+      const response = await axios.get("http://localhost:3000/api/contacto");
       setNovedades(response.data)
       setLoading(false)
     };
@@ -76,7 +76,7 @@ const TodasLasPeliculas = (props) => {
 
 
          <div class="row row-cols-1 row-cols-md-3"> 
-           <h2>Peliculas</h2>
+           
            {
             loading ? (
               <p>Cargando...</p>
