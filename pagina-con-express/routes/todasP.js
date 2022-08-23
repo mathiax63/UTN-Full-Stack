@@ -35,7 +35,7 @@ router.get('/', async function(req, res, next) {
     });
 
     
-    router.get('detalles/:id', async function(req, res, next) {
+    router.get('/detalles/:id', async function(req, res, next) {
       //console.log("Pase??")
         let titulosYFoto = await todasLasPeliculasModel.todasLasPeliculas()
         

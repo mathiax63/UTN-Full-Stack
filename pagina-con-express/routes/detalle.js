@@ -7,7 +7,7 @@ const cloudinary = require("cloudinary").v2;
 router.get('/', function(req, res, next) {
   res.render('detalles');
 });
-router.get('detalles/:id', async function(req, res, next) {
+router.get('/detalles/:id', async function(req, res, next) {
   //console.log("Pase??")
     let titulosYFoto = await todasLasPeliculasModel.todasLasPeliculas()
     

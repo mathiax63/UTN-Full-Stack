@@ -1,33 +1,34 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import axios from "axios"
-import  {useState} from "react"
+import React, {useState} from "react"
 
 
 const Footer = (props) => {
 
   const initialFrom = {   
     email:'',
-    pedido: '',
+    pedido: ''
   }
 
-  const [sending, setSending] = useState(false)
+  const [sending, setSending] = useState(false);
   const [msg, setMsg] =useState("");
-  const [formData,setFromData] =useState(initialFrom)
+  const [formData,setFromData] =useState(initialFrom);
 
-  const handleChange =e =>{
-    const {name, value} = e.target
+  const handleChange = e =>{
+    const {name, value} = e.target;
     setFromData(oldData => ({
       ...oldData,
       [name]:value
-    }))
+    }));
   }
 
   const handleSubmit = async e => {
     e.preventDefault();
     setMsg("");
     setSending(true)
-    const response = await axios.post("http://localhost:3000/api/contacto", formData)
+    const response = await axios.post("http://localhost:3000/api/contacto", formData);
+    console.log("response")
     setSending(false);
     setMsg(response.data.message);
     if (response.data.error === false){
@@ -37,7 +38,7 @@ const Footer = (props) => {
 
 
 
-    return (
+    return ( 
       <div>
       <footer>
     <div class="DivFooter">
@@ -69,7 +70,7 @@ const Footer = (props) => {
         </article>
       </section>
     </div>
-      <form className="formPP"action="/contacto" onSubmit={handleSubmit} method='post'>
+      <form className="formPP" action="/contacto" onSubmit={handleSubmit} method='post'>
         <h3>¿No encuentra su pelicula?</h3>
         <p>Envienos un email con el nombre d la pelicula y envrebe la estaremos añadiendo</p>
         <div class="contenedorDePedirPeliculas">
@@ -88,6 +89,7 @@ const Footer = (props) => {
   </div>
 
     </form>
+    
     {sending ? <p>Enviando.....</p> : null}
     {msg ? <p>{msg}</p> : null}
 

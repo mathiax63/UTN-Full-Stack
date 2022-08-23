@@ -1,6 +1,6 @@
 import React from "react"
 
-const novedadItem = (props => {
+const detalles = (props => {
     const { id, title, sinopsi, imagen, estrellas, etiquetas, categoria, fecha, body} = props;
     return (
         <div className="divCompTodasP"><a className="aDelCT" href="/detalles">
@@ -14,4 +14,4 @@ const novedadItem = (props => {
     )
 })
 
-export default novedadItem
+export default detalles
