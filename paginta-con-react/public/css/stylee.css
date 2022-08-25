@@ -9,11 +9,15 @@ ul{
     
 }
 .divCompTodasP{
-    padding: 20px;
+    flex: none;
+    width: 100%;
+    margin: 20px 20px;
+    height: 300px;
     width: 20%;
 }
 .imgTp{
     width: 100%;
+    height: 85%;
 }
 .aDelCT{
     text-align: center;
@@ -24,6 +28,15 @@ a{
     text-align: center;
     justify-content: space-around;
     width: 20%;
+}
+.detacados5{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.antesDelA{
+    height: 50%;
 }
 h1{
     text-align: start;
@@ -129,7 +142,8 @@ input {
 }
 .Destacados-Y-Novedades-General{
     margin: 30px;
-    width: 100%;
+
+    
 }
 .ImgCard{
     height: 50%;

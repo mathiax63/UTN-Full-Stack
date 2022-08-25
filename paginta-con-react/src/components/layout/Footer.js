@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import axios from "axios"
 import React, {useState} from "react"
-
-
+ 
 const Footer = (props) => {
 
   const initialFrom = {   
@@ -28,13 +27,14 @@ const Footer = (props) => {
     setMsg("");
     setSending(true)
     const response = await axios.post("http://localhost:3000/api/contacto", formData);
-    console.log("response")
     setSending(false);
     setMsg(response.data.message);
     if (response.data.error === false){
     setFromData(initialFrom)
   }
   }
+  //console.log(formData)
+
 
 
 

@@ -5,14 +5,16 @@ const cloudinary = require("cloudinary").v2;
 let nodemailer = require("nodemailer")
 
 
-      router.post("/contacto", async (res,req) =>{
-        if (!body || !body.email) {
-           return {
-            error: false} }
+
+      router.post("/contacto", async (req,res) =>{
+        if (!req.body || !req.body.email) {
+          res.status(400).json ({
+            error: false
+          })}
         const mail={
           to:"mathyoyo@hotmail.es",
           subject:"contacto web",
-          html: `${req.body.email} se contacto a traves de la web y quiera pedir una pelicula ${req.body.pedido}`
+          html: `${req.body.email} se contacto a traves de la web y quiera pedir la pelicula ${req.body.pedido}`
         }
         
         const transport = nodemailer.createTransport({
@@ -29,6 +31,7 @@ let nodemailer = require("nodemailer")
           message: "mensaje enviado"
         })
       })
+      
 
 
 router.get('/contacto', async function(req, res, next) {
@@ -38,8 +41,7 @@ router.get('/contacto', async function(req, res, next) {
     titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
       if(peliculas.imagenes){
         const imagen = cloudinary.url(peliculas.imagenes,{
-          width:960,
-          height:200,
+         
           crop:"fill"
         });
         return {
@@ -57,6 +59,80 @@ router.get('/contacto', async function(req, res, next) {
       });
 
 
+
+      router.get('/detalles/:id', async function(req, res, next) {
+
+        let titulosYSinopsis = await todasLasPeliculasModel.todasLasPeliculas()
+        
+        titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
+          if(peliculas.imagenes){
+            const imagen = cloudinary.url(peliculas.imagenes,{
+              width:960,
+              height:200,
+              crop:"fill"
+            });
+            return {
+              ...peliculas,
+              imagen
+            }
+          }else{
+            return {
+              ...peliculas,
+              imagen:" "
+            }
+          }
+        })
+        res.json(titulosYSinopsis)
+          });
+          router.get('/', async function(req, res, next) {
+
+            let titulosYSinopsis = await todasLasPeliculasModel.las5P()
+            
+            
+            titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
+              if(peliculas.imagenes){
+                const imagen = cloudinary.url(peliculas.imagenes,{
+                 
+                  crop:"fill"
+                });
+                return {
+                  ...peliculas,
+                  imagen
+                }
+              }else{
+                return {
+                  ...peliculas,
+                  imagen:" "
+                }
+              }
+            })
+            res.json(titulosYSinopsis)
+              });
+              router.get('/a', async function(req, res, next) {
+
+                let titulosYSinopsiss = await todasLasPeliculasModel.las5PD()
+                
+                titulosYSinopsiss = titulosYSinopsiss.map(peliculas =>{
+                  if(peliculas.imagenes){
+                    const imagen = cloudinary.url(peliculas.imagenes,{
+                     
+                      crop:"fill"
+                    });
+                    return {
+                      ...peliculas,
+                      imagen
+                    }
+                  }else{
+                    return {
+                      ...peliculas,
+                      imagen:" "
+                    }
+                  }
+                })
+                res.json(titulosYSinopsiss)
+                  });
+        
+    
 
 
 

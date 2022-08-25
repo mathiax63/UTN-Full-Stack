@@ -1,4 +1,24 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
+import NovedadItem from "../components/novedades/Detalles"
+
+
+
+
 const Detalles = (props) => {
+    const [loading, setLoading] = useState(false)
+  const [novedades, setNovedades] = useState([])
+
+  useEffect(() => {
+    const cargarNovedades = async () => {
+      setLoading(true);
+      const response = await axios.get("http://localhost:3000/api/detalles/:id");
+      setNovedades(response.data)
+      setLoading(false)
+    };
+    cargarNovedades();
+  }, []);
+    
     return (
         <div>
             <div class="productoDetalle">
@@ -36,6 +56,7 @@ const Detalles = (props) => {
                     </div>
                     <div class="video"><h3>Trailer</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/QC5eaMNaHLs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen className="text-align: center ;"></iframe>
                         <h3>Imagenes</h3>
+
                         <div class="imgDeImgDetail">
                             <div class="card1"><img class="imgDeDetail" src="img/avatar-2.3imagenes.webp" alt="" /></div>
                             <div class="card1"><img class="imgDeDetail" src="img/avatar2.1.jpg" alt="" /></div>
@@ -43,6 +64,15 @@ const Detalles = (props) => {
                         <div class="imgDeImgDetail">
                             <div class="card1"><img class="imgDeDetail" src="img/Avatar 2.jfif" alt="" /></div>
                             <div class="card1"><img class="imgDeDetail" src="img/avatar 2.5.jpeg" alt="" /></div>
+                            {
+            loading ? (
+              <p>Cargando...</p>
+            ) : (
+              novedades.map(item => <NovedadItem key= {item.id}
+                title={item.titulo}  sinopsis={item.sinopsis}
+                imagen={item.imagen}  body={item.cuerpo} />)
+            )
+           }
                         </div>
                     </div>
                 </div>

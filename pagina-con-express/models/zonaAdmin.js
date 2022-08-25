@@ -40,7 +40,22 @@ async function modificarecho(obj, id){
         throw error
     }
 }
+async function las5P(){
+    
+    let query ="select * from peliculas order by id desc limit 5 ";
+    let rows = await pool.query(query);
+    //console.log(rows)
+    return rows
+
+}
+async function las5PD(){
+    
+    let query ="select * from peliculas order by estrellas desc limit 5 ";
+    let rows = await pool.query(query);
+    //console.log(rows)
+    return rows
+
+}
 
 
-
-module.exports = {todasLasPeliculas, agregarProducto, borrar, actualizar, modificarecho}
+module.exports = {todasLasPeliculas, agregarProducto, borrar, actualizar, modificarecho,las5P,las5PD}
