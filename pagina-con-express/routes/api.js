@@ -62,13 +62,12 @@ router.get('/contacto', async function(req, res, next) {
 
       router.get('/detalles/:id', async function(req, res, next) {
 
-        let titulosYSinopsis = await todasLasPeliculasModel.todasLasPeliculas()
+        let titulosYSinopsis = await todasLasPeliculasModel.lasPDet()
         
         titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
           if(peliculas.imagenes){
             const imagen = cloudinary.url(peliculas.imagenes,{
-              width:960,
-              height:200,
+          
               crop:"fill"
             });
             return {

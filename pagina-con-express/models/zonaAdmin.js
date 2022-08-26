@@ -57,5 +57,13 @@ async function las5PD(){
 
 }
 
+async function lasPDet(){
+    
+    let query ="select * from peliculas order by id desc limit 1 ";
+    let rows = await pool.query(query);
+    //console.log(rows)
+    return rows
 
-module.exports = {todasLasPeliculas, agregarProducto, borrar, actualizar, modificarecho,las5P,las5PD}
+}
+
+module.exports = {todasLasPeliculas, agregarProducto, borrar, actualizar, modificarecho,las5P,las5PD,lasPDet}

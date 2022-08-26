@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 router.get('/detalles/:id', async function(req, res, next) {
   //console.log("Pase??")
-    let titulosYFoto = await todasLasPeliculasModel.todasLasPeliculas()
+    let titulosYFoto = await todasLasPeliculasModel.lasPDet()
     
     
     titulosYFoto = titulosYFoto.map(peliculas =>{
