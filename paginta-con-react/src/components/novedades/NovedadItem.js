@@ -1,15 +1,16 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const novedadItem = (props => {
-    const { id, title, sinopsi, imagen, estrellas, etiquetas, categoria, fecha, body} = props;
+    const {  title, imagen, body} = props;
     return (
-        <div className="divCompTodasP"><a className="aDelCT" href="/detalles">
+        <div className="divCompTodasP"><Link className="aDelCT" to="/detalles/{id}">
             
             
             <img className="imgTp" src={imagen} />
             <h5>{title}</h5>
             <div dangerouslySetInnerHTML={{__html:body}} />
-            <hr /></a>
+            <hr /></Link>
         </div>
     )
 })

@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import NovedadItem from "../components/novedades/Detalles"
+import { useParams } from 'react-router-dom';
 
 
 
 
 const Detalles = (props) => {
+  const { id } = useParams();
     const [loading, setLoading] = useState(false)
   const [novedades, setNovedades] = useState([])
-
+console.log("id", id)
   useEffect(() => {
     const cargarNovedades = async () => {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/detalles/:id");
+      const response = await axios.get(`http://localhost:3000/api/detalles/${id}`);
+      
       setNovedades(response.data)
       setLoading(false)
     };

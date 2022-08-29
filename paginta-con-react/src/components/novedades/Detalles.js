@@ -5,6 +5,7 @@ const detalles = (props => {
     return (
         <div>
         <div class="productoDetalle">
+            
             <h3>{title}</h3>
             <div class="imgDeDetail"><img src={imagen} style={{height:"100%"}} alt="" /></div>
             <div class="datosDetail">

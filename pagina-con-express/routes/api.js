@@ -57,10 +57,7 @@ router.get('/contacto', async function(req, res, next) {
     })
     res.json(titulosYSinopsis)
       });
-
-
-
-      router.get('/detalles/:id', async function(req, res, next) {
+      router.get('/detalles', async function(req, res, next) {
 
         let titulosYSinopsis = await todasLasPeliculasModel.lasPDet()
         
@@ -83,7 +80,33 @@ router.get('/contacto', async function(req, res, next) {
         })
         res.json(titulosYSinopsis)
           });
-          router.get('/', async function(req, res, next) {
+
+
+
+      router.get('/detalles/{id}', async function(req, res, next) {
+
+        let titulosYSinopsis = await todasLasPeliculasModel.lasPDet()
+        
+        titulosYSinopsis = titulosYSinopsis.map(peliculas =>{
+          if(peliculas.imagenes){
+            const imagen = cloudinary.url(peliculas.imagenes,{
+          
+              crop:"fill"
+            });
+            return {
+              ...peliculas,
+              imagen
+            }
+          }else{
+            return {
+              ...peliculas,
+              imagen:" "
+            }
+          }
+        })
+        res.json(titulosYSinopsis)
+          });
+          router.get('/b', async function(req, res, next) {
 
             let titulosYSinopsis = await todasLasPeliculasModel.las5P()
             
@@ -113,8 +136,7 @@ router.get('/contacto', async function(req, res, next) {
                 
                 titulosYSinopsiss = titulosYSinopsiss.map(peliculas =>{
                   if(peliculas.imagenes){
-                    const imagen = cloudinary.url(peliculas.imagenes,{
-                     
+                    const imagen = cloudinary.url(peliculas.imagenes,{                     
                       crop:"fill"
                     });
                     return {

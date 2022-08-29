@@ -10,28 +10,22 @@ import Nuevas from "../components/novedades/HomeCEstrellas"
 const HomePage = (props) => {
   const [loading, setLoading] = useState(false)
   const [novedades, setNovedades] = useState([])
+  const [estrellas, setEstrellas] = useState([])
 
   
    
   
 
   useEffect(() => {
- const Nuevas = async () => {
+ const cargarTodo = async () => {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/a");
-      setNovedades(response.data)
+      const porFecha = await axios.get("http://localhost:3000/api/b");
+      setNovedades(porFecha.data)
+      const porEstrellas = await axios.get("http://localhost:3000/api/a");
+      setEstrellas(porEstrellas.data)
       setLoading(false)
     };
-    Nuevas();
-
-
-    const cargarNovedades = async () => {
-      setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/");
-      setNovedades(response.data)
-      setLoading(false)
-    };
-    cargarNovedades();
+    cargarTodo();
   }, []);
 
   
@@ -106,7 +100,7 @@ const HomePage = (props) => {
               <p>Cargando...</p>
             ) : (
               novedades.map(item => <NovedadItem key= {item.id}
-                title={item.titulo}  sinopsis={item.sinopsis} estreno={item.estreno}
+                title={item.titulo}  sinopsis={item.sinopsis} estrellas={item.estrellas} estreno={item.estreno}
                 imagen={item.imagen}  body={item.cuerpo} />)
             )
            }
@@ -123,8 +117,9 @@ const HomePage = (props) => {
             loading ? (
               <p>Cargando...</p>
             ) : (
-              novedades.map(item => <Nuevas key= {item.id}
+              estrellas.map(item => <Nuevas key= {item.id}
                 title={item.titulo}  sinopsis={item.sinopsis}
+                estrellas={item.estrellas} estreno={item.estreno}
                 imagen={item.imagen}  body={item.cuerpo} />)
             )
            }
