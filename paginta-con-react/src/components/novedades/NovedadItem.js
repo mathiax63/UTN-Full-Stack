@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const novedadItem = (props => {
-    const {  title, imagen, body} = props;
+    const { id, title, imagen, body} = props;
     return (
-        <div className="divCompTodasP"><Link className="aDelCT" to="/detalles/{id}">
+        <div className="divCompTodasP"><Link className="aDelCT" to={"/detalles/"+id}>
             
             
             <img className="imgTp" src={imagen} />

@@ -1,9 +1,10 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const laspeliculasiestrellas = (props => {
-    const {  title, imagen,estrellas,estreno,sinopsis, body} = props;
+    const {  id,title, imagen,estrellas,estreno,sinopsis, body} = props;
     return (
-        <div className="card" style={{flex: "initial", height:"800px"}}><a className="aDelCT" href="/detalles">
+        <div className="card" style={{flex: "initial", height:"800px"}}><Link className="aDelCT" to={"/detalles/"+ id}>
              <div className="ImgCard">
            <img className="card-img-top" src={imagen} />
             </div>
@@ -13,7 +14,7 @@ const laspeliculasiestrellas = (props => {
            <p className="card-text">{estrellas}</p>
            <p>Estreno : {estreno}</p>
             <div dangerouslySetInnerHTML={{__html:body}} />
-            <hr /></div></a>
+            <hr /></div></Link>
         </div>
         
         

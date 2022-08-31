@@ -10,13 +10,13 @@ const Detalles = (props) => {
   const { id } = useParams();
     const [loading, setLoading] = useState(false)
   const [novedades, setNovedades] = useState([])
-console.log("id", id)
+console.log("idd", id)
   useEffect(() => {
     const cargarNovedades = async () => {
       setLoading(true);
       const response = await axios.get(`http://localhost:3000/api/detalles/${id}`);
-      
       setNovedades(response.data)
+      console.log(response.data)
       setLoading(false)
     };
     cargarNovedades();
@@ -30,7 +30,7 @@ console.log("id", id)
               <p>Cargando...</p>
             ) : (
               novedades.map(item => <NovedadItem key= {item.id}
-                title={item.titulo}  sinopsis={item.sinopsis}
+                id={item.id} title={item.titulo}  sinopsis={item.sinopsis} 
                 estreno={item.estreno}  etiquetas={item.etiquetas}
                 trailer={item.trailer}  estrellas={item.estrellas}
                 Plataformasparaver={item.Plataformasparaver}

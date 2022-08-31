@@ -2,7 +2,7 @@
 const PaginaParaVer = (props) => {
     return (
         <div>
-           <h2 className="margin-left:30px;">Plataformas</h2>
+           <h2 className="DYN" style={{marginTop:"30px"}} >Plataformas</h2>
       <p className="margin-left:30px;">Estas son las plataformas donde puede ver sus peliculas</p>
       <div class="row row-cols-1 row-cols-md-3">
       <div class="card"><a href="https://www.hbomax.com/ar/es?utm_id=sa%7c71700000084767084%7c58700007214361776%7cp64690578728&gclid=CjwKCAjw7IeUBhBbEiwADhiEMXsEG77KGopufXdZwhRZWTlGRKoxQXYS2tvQcTmxisCDy6ohXGcNKhoCh9YQAvD_BwE&gclsrc=aw.ds">

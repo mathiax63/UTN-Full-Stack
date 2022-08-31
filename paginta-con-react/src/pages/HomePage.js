@@ -100,7 +100,7 @@ const HomePage = (props) => {
               <p>Cargando...</p>
             ) : (
               novedades.map(item => <NovedadItem key= {item.id}
-                title={item.titulo}  sinopsis={item.sinopsis} estrellas={item.estrellas} estreno={item.estreno}
+                id={item.id} title={item.titulo}  sinopsis={item.sinopsis} estrellas={item.estrellas} estreno={item.estreno}
                 imagen={item.imagen}  body={item.cuerpo} />)
             )
            }
@@ -118,7 +118,7 @@ const HomePage = (props) => {
               <p>Cargando...</p>
             ) : (
               estrellas.map(item => <Nuevas key= {item.id}
-                title={item.titulo}  sinopsis={item.sinopsis}
+                id={item.id} title={item.titulo}  sinopsis={item.sinopsis}
                 estrellas={item.estrellas} estreno={item.estreno}
                 imagen={item.imagen}  body={item.cuerpo} />)
             )

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import NovedadItem from "../components/novedades/NovedadItem"
@@ -81,18 +80,11 @@ const TodasLasPeliculas = (props) => {
             loading ? (
               <p>Cargando...</p>
             ) : (
-              novedades.map(item => <NovedadItem key= {item.id}
-                title={item.titulo}  sinopsis={item.sinopsis}
+              novedades.map(item => <NovedadItem key= {item.id}        
+              id={item.id}  title={item.titulo}  sinopsis={item.sinopsis}
                 imagen={item.imagen}  body={item.cuerpo} />)
             )
            }
-              <div class="card"><Link to="/detalle">
-                <img src="img/Avatar 2.jfif" class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">Avatar 2</h5>
-                </div></Link>
-              </div>
-            
             
               
               </div>

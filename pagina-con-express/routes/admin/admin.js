@@ -217,8 +217,6 @@ router.post("/editar", async (req, res, next) => {
     if(borrar_vieja && req.body.img_original){
       await (destroy(req.body.img_original))
     }
-
-
     let obj = {
       titulo: req.body.titulo,
       sinopsis: req.body.sinopsis,

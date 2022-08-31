@@ -86,12 +86,13 @@ const Footer = (props) => {
     </div>
 
     <button type="submit" class="btn-btn-primary" className="margin: 0px;">Enviar</button>
+     {sending ? <p>Enviando.....</p> : null}
+    {msg ? <p>{msg}</p> : null}
   </div>
 
     </form>
     
-    {sending ? <p>Enviando.....</p> : null}
-    {msg ? <p>{msg}</p> : null}
+   
 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

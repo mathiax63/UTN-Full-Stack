@@ -57,13 +57,10 @@ async function las5PD(){
 
 }
 
-async function lasPDet(){
-    
+async function lasPDet(id){
     let query ="select * from peliculas where id = ?";
     let rows = await pool.query(query, [id]);
     return rows[0]
-
-
 }
 
 module.exports = {todasLasPeliculas, agregarProducto, borrar, actualizar, modificarecho,las5P,las5PD,lasPDet}
